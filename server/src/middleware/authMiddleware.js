@@ -51,13 +51,11 @@ export function signToken(userId) {
 }
 
 export function setAuthCookie(res, token) {
-  const maxAgeMs = parseExpiryToMs(env.jwtExpiresIn);
-  res.cookie(COOKIE_NAME, token, {
+  res.cookie("token", token, {
     httpOnly: true,
-    secure: env.cookieSecure,
-    sameSite: "strict",
-    maxAge: maxAgeMs,
-    path: "/",
+    secure: true,        // REQUIRED for Vercel + Render (HTTPS)
+    sameSite: "none",    // REQUIRED for cross-domain
+    maxAge: 8 * 60 * 60 * 1000,
   });
 }
 
