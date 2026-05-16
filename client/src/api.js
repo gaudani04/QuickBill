@@ -14,7 +14,7 @@ api.interceptors.response.use(
     const url = err.config?.url || "";
     if (status === 401 && !url.includes("/auth/login") && !url.includes("/auth/me")) {
       if (!window.location.pathname.startsWith("/login")) {
-        window.location.assign("/login");
+        window.location.href = "/login";
       }
     }
     return Promise.reject(err);
