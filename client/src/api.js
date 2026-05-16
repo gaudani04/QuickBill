@@ -1,10 +1,18 @@
 import axios from "axios";
 
+// const api = axios.create({
+//   baseURL: "/api",
+//   withCredentials: true,
+//   headers: { "Content-Type": "application/json" },
+// });
+import axios from "axios";
+
 const api = axios.create({
-  baseURL: "/api",
+  baseURL: import.meta.env.VITE_API_URL + "/api",
   withCredentials: true,
-  headers: { "Content-Type": "application/json" },
 });
+
+export default api;
 
 api.interceptors.response.use(
   (r) => r,
