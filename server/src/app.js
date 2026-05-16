@@ -18,6 +18,11 @@ import reportRoutes from "./routes/reportRoutes.js";
 
 export function createApp() {
   const app = express();
+  app.get("/", (req, res) => {
+  res.json({
+    status: "QuickBill API Running 🚀"
+  });
+});
 
   app.use(
     helmet({
